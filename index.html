@@ -18,6 +18,124 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" type="text/css" href="css/style16444.css?v=9">    
 	<style>
+	
+	/* ===== RESEÑAS PRO ===== */
+.reviews {
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  padding: 4rem 1.5rem;
+  overflow: hidden;
+}
+
+.reviews-container {
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+
+.reviews h2 {
+  font-size: 2.2rem;
+  color: #1f2937;
+}
+
+.reviews-subtitle {
+  color: #6b7280;
+  margin: 0.5rem 0 3rem;
+}
+
+.reviews-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.reviews-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: slide 18s infinite;
+}
+
+.review-card {
+  min-width: 320px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s forwards;
+}
+
+.review-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 4px solid #3b82f6;
+}
+
+.review-text {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+
+.review-card h4 {
+  margin: 0.5rem 0 0;
+  color: #111827;
+}
+
+.review-card span {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* ===== ESTRELLAS ===== */
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.stars span {
+  font-size: 1.2rem;
+  color: #facc15;
+  animation: pop 0.5s ease forwards;
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes slide {
+  0% { transform: translateX(0); }
+  33% { transform: translateX(-340px); }
+  66% { transform: translateX(-680px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .reviews-track {
+    animation: none;
+    flex-direction: column;
+  }
+
+  .review-card {
+    min-width: 100%;
+  }
+}
+
 	/* LOGO TEXTO */
 .logo-text {
     font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
@@ -227,7 +345,69 @@
         </div>
     
  
-    
+    <section class="reviews" id="reseñas">
+  <div class="reviews-container">
+    <h2>💬 Reseñas de nuestra comunidad</h2>
+    <p class="reviews-subtitle">
+      Experiencias reales de personas que confían en <strong>cpemociones.com</strong>
+    </p>
+
+    <div class="reviews-slider">
+      <div class="reviews-track">
+
+        <!-- Reseña 1 -->
+        <div class="review-card">
+          <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Usuario 1" class="review-avatar">
+          <div class="stars" data-rating="5"></div>
+          <p class="review-text">
+            “Este espacio me ayudó a comprender las emociones de mis hijos y hace que me sienta acompañado.
+            El contenido es claro y muy humano.”
+          </p>
+          <h4>Carlos R.</h4>
+          <span>Estudiante universitaria</span>
+        </div>
+
+        <!-- Reseña 2 -->
+        <div class="review-card">
+          <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Usuario 2" class="review-avatar">
+          <div class="stars" data-rating="4"></div>
+          <p class="review-text">
+            “Diseño limpio, mensajes empáticos y recursos útiles.
+            Se nota el compromiso con la salud mental.”
+          </p>
+          <h4>Mia D.</h4>
+          <span>Joven profesional</span>
+        </div>
+
+        <!-- Reseña 3 -->
+        <div class="review-card">
+          <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Usuario 3" class="review-avatar">
+          <div class="stars" data-rating="5"></div>
+          <p class="review-text">
+            “Ideal para niños que buscan orientación emocional sin juicios.
+            Muy recomendado.”
+          </p>
+          <h4>Lucía P.</h4>
+          <span>Docente</span>
+        </div>
+
+
+ <!-- Reseña 4 -->
+        <div class="review-card">
+          <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Usuario 3" class="review-avatar">
+          <div class="stars" data-rating="5"></div>
+          <p class="review-text">
+            “Ideal para niños que buscan orientación emocional sin juicios.
+            Muy recomendado.”
+          </p>
+          <h4>Flor P.</h4>
+          <span>Docente</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
     
     
     <section id="didacticos" class="juegos post style1">
@@ -448,6 +628,19 @@
     <script src="js/owl.carousel.min.js"></script>
     
     <script type="text/javascript">
+	
+	
+  document.querySelectorAll('.stars').forEach(starContainer => {
+    const rating = starContainer.dataset.rating;
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement('span');
+      star.innerHTML = i <= rating ? '★' : '☆';
+      star.style.animationDelay = `${i * 0.1}s`;
+      starContainer.appendChild(star);
+    }
+  });
+
+
 	
 // Solución simple para móvil y PC
 document.addEventListener('DOMContentLoaded', function() {
