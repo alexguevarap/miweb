@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" type="text/css" href="css/stylec164.css?v=9">    
+    <link rel="stylesheet" type="text/css" href="css/style16444.css?v=9">    
 	<style>
 	/* LOGO TEXTO */
 .logo-text {
@@ -86,7 +86,7 @@
     
 <body id="home">
 	
-    <header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
+    <header id="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <!-- responsive nav button -->
@@ -432,6 +432,13 @@
 			</div>
 		</div>
 	</footer>
+	
+	<!-- Modal para imágenes -->
+<div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div id="modalCaption"></div>
+</div>
     
     <a href="#" data-scroll class='scroll_move' id="toTop" style="display: block;"></a>
     <script src="js/SmoothScroll.min.js"></script> 
@@ -441,6 +448,66 @@
     <script src="js/owl.carousel.min.js"></script>
     
     <script type="text/javascript">
+	
+// Solución simple para móvil y PC
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("modalImage");
+    var closeBtn = document.querySelector(".modal-close");
+    
+    // Usar evento que funcione en ambos
+    document.querySelectorAll('#owl-demo2 .item img').forEach(img => {
+        // Eliminar eventos táctiles del carrusel para estas imágenes
+        img.style.pointerEvents = 'auto';
+        
+        img.addEventListener('click', function(e) {
+            e.stopPropagation(); // Detener propagación
+            e.preventDefault(); // Prevenir comportamiento por defecto
+            
+            modal.style.display = 'block';
+            modalImg.src = this.src;
+            document.body.style.overflow = 'hidden';
+            
+            // En móvil, desactivar el carrusel temporalmente
+            if (window.innerWidth <= 767) {
+                var owl = $('#owl-demo2').data('owlCarousel');
+                if (owl) {
+                    owl.settings.autoplay = false;
+                    owl.stop();
+                }
+            }
+            
+            return false;
+        });
+    });
+    
+    // Cerrar modal
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        
+        // Reactivar carrusel en móvil
+        if (window.innerWidth <= 767) {
+            var owl = $('#owl-demo2').data('owlCarousel');
+            if (owl) {
+                owl.settings.autoplay = true;
+                owl.play();
+            }
+        }
+    }
+    
+    closeBtn.addEventListener('click', closeModal);
+    
+    modal.addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') closeModal();
+    });
+});
+
+
          $(document).ready(function($) {	 
             $('.carousel').carousel({
                 interval: 3000,
